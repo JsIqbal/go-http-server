@@ -21,6 +21,9 @@ func formHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("URL: %s\n", r.URL.Path)
+	fmt.Printf("Method: %s\n", r.Method)
+
 	if r.URL.Path != "/hello" {
 		http.Error(w, "404 not found", http.StatusNotFound)
 		return
@@ -29,8 +32,10 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "method is not supported", http.StatusNotFound)
 		return
 	}
+
 	fmt.Fprintf(w, "hello!")
 }
+
 
 func iqhandler (w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/iq" {
